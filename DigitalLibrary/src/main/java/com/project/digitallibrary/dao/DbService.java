@@ -13,4 +13,6 @@ public interface DbService {
 
     public List<Asset> findAll();
 
+    public List<Asset> findMany(Asset asset);
+
 }

@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/v1")
 public class LibraryController {
 
     @Autowired
     private InMemoryService service;
 
-    @GetMapping("/v1/asset/{id}")
+    @GetMapping("/asset/{id}")
     public Asset retrieveAsset(@PathVariable int id){
         Asset asset = service.findOne(id);
         if (asset == null){
@@ -24,14 +25,24 @@ public class LibraryController {
         return asset;
     }
 
-    @PostMapping("/v1/asset")
+    @PostMapping("/asset")
     public Response saveAsset(@RequestBody Asset asset){
         return service.save(asset);
 
     }
 
-    @GetMapping("/v1/asset")
+    @GetMapping("/asset")
     public List<Asset> getAllAsset() {
         return service.findAll();
+    }
+
+    @PostMapping("/asset/list")
+    public List<Asset> queryAsset(@RequestBody Asset asset){
+        return service.findMany(asset);
+    }
+
+    @DeleteMapping("/asset/{id}")
+    public Response deleteAsset(@PathVariable int id){
+        return service.delete(id);
     }
 }

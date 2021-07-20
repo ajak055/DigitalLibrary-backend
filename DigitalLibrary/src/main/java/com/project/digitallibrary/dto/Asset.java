@@ -1,6 +1,8 @@
 package com.project.digitallibrary.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.criteria.CriteriaBuilder;
 
 public class Asset {
