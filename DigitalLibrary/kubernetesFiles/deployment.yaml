@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: digitallib-deployment
+  labels:
+    app: digitallibrary
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: digitallibrary
+  template:
+    metadata:
+      labels:
+        app: digitallibrary
+    spec:
+      containers:
+      - name: digitallibrary
+        image: ajayk05/digitallibrary:latest
+        ports:
+        - containerPort: 8081
