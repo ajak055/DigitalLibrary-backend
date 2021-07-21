@@ -38,7 +38,7 @@ API details are available as openAPI2.0 spec. to access
 http://localhost:<port>/swagger-ui.html
 
 
-#-- Build & Deployment ---
+**-- Build & Deployment ---**
 To build the image use mvn package
 
 you can run this application in 3 ways
