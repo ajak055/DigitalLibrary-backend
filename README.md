@@ -35,6 +35,7 @@ Sample payload
 }
 
 API details are available as openAPI2.0 spec. to access
+
 http://localhost:<port>/swagger-ui.html
 
 
