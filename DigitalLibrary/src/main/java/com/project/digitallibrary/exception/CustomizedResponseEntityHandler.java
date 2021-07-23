@@ -27,4 +27,17 @@ public class CustomizedResponseEntityHandler extends ResponseEntityExceptionHand
 
         return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(NoDataFoundException.class)
+    public final ResponseEntity<Object> NoDataFoundException(NoDataFoundException ex, WebRequest request){
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DatabaseException.class)
+    public final ResponseEntity<Object> DatabaseException(DatabaseException ex, WebRequest request){
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
 }

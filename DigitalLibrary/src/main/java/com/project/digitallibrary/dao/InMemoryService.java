@@ -27,7 +27,7 @@ public class InMemoryService implements DbService{
     static {
         Map<String, Object> prop = new HashMap<>();
         prop.put("test", "asdf");
-        libraryAsset.add(new Asset(1,"DevelopmentBoard","microprocessorBoard", 1, "RPI", "Rack12", new AssetInfo(true), new ConfigDetails(prop)));
+        libraryAsset.add(new Asset(1,"DevelopmentBoard","microprocessorBoard", 1, "RPI", "Rack12", new AssetInfo(true), prop));
     }
 
     public Response save(Asset lib){

@@ -1,9 +1,12 @@
 package com.project.digitallibrary.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Asset {
     private Integer id;
@@ -13,9 +16,9 @@ public class Asset {
     private String name;
     private String location;
     private AssetInfo details;
-    private ConfigDetails configDetails;
+    private Map<String, Object> information = new LinkedHashMap<>();
 
-    public Asset(Integer id, String category, String subCategory, Integer quantity, String name, String location, AssetInfo details, ConfigDetails configDetails) {
+    public Asset(Integer id, String category, String subCategory, Integer quantity, String name, String location, AssetInfo details, Map<String, Object> information) {
         this.id = id;
         this.category = category;
         this.subCategory = subCategory;
@@ -23,7 +26,7 @@ public class Asset {
         this.name = name;
         this.location = location;
         this.details = details;
-        this.configDetails = configDetails;
+        this.information = information;
     }
 
     public Integer getId() {
@@ -82,12 +85,12 @@ public class Asset {
         this.details = details;
     }
 
-    public ConfigDetails getConfigDetails() {
-        return configDetails;
+    public Map<String, Object> getInformation() {
+        return information;
     }
 
-    public void setConfigDetails(ConfigDetails configDetails) {
-        this.configDetails = configDetails;
+    @JsonAnySetter
+    public void setConfigDetails(String key, Object value) { information.put(key, value);
     }
 
     @Override
@@ -100,7 +103,7 @@ public class Asset {
                 ", name='" + name + '\'' +
                 ", location='" + location + '\'' +
                 ", details=" + details +
-                ", configDetails=" + configDetails +
+                ", information=" + information +
                 '}';
     }
 }
